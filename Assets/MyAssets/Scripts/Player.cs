@@ -33,6 +33,8 @@ public class Player : MonoBehaviour {
     /// </summary>
     public static GameObject grippingGameObject { get { return handInstance.GripGimmic; } }
 
+    public static CharacterMotor characterMoter { get { return rootInstance.GetComponent<CharacterMotor>(); } }
+
 
     void Awake()
     {

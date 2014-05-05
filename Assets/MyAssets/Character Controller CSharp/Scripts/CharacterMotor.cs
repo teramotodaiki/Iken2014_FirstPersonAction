@@ -24,6 +24,7 @@ public class CharacterMotor : MonoBehaviour
     [System.NonSerialized]
     public bool inputJump = false;
 
+    [System.Serializable]
     public class CharacterMotorMovement
     {
         // The maximum horizontal speed when moving
@@ -64,7 +65,7 @@ public class CharacterMotor : MonoBehaviour
         public Vector3 lastHitPoint = new Vector3(Mathf.Infinity, 0, 0);
     }
 
-    public CharacterMotorMovement movement = new CharacterMotorMovement();
+    public CharacterMotorMovement movement;
 
     public enum MovementTransferOnJump
     {
@@ -75,6 +76,7 @@ public class CharacterMotor : MonoBehaviour
     }
 
     // We will contain all the jumping related variables in one helper class for clarity.
+    [System.Serializable]
     public class CharacterMotorJumping
     {
         // Can the character jump?
@@ -116,7 +118,7 @@ public class CharacterMotor : MonoBehaviour
         public Vector3 jumpDir = Vector3.up;
     }
 
-    public CharacterMotorJumping jumping = new CharacterMotorJumping();
+    public CharacterMotorJumping jumping;
 
     public class CharacterMotorMovingPlatform
     {

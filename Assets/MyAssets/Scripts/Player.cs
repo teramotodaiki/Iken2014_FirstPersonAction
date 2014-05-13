@@ -33,8 +33,10 @@ public class Player : MonoBehaviour {
     /// </summary>
     public static GameObject grippingGameObject { get { return handInstance.GripGimmic; } }
 
+    /// <summary>
+    /// プレイヤーのキャラクターモーター
+    /// </summary>
     public static CharacterMotor characterMoter { get { return rootInstance.GetComponent<CharacterMotor>(); } }
-
 
     void Awake()
     {
@@ -47,6 +49,7 @@ public class Player : MonoBehaviour {
         Player.rootGameObject = this.gameObject;
         Player.handInstance = transform.GetComponentInChildren<CharacterHandController>();
         Player.handGameObject = Player.handInstance.gameObject;
+
     }
 
 	// Use this for initialization
@@ -58,4 +61,5 @@ public class Player : MonoBehaviour {
 	void Update () {
 	
 	}
+
 }

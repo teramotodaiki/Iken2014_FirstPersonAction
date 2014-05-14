@@ -17,7 +17,13 @@ public class CharacterHandController : MonoBehaviour {
     /// <summary>
     /// 最も手から近いギミックオブジェクト
     /// </summary>
-    public GameObject NearestGimmic { get { return NearGimmicsAll.Count() < 1 ? null : NearGimmicsAll.OrderBy<GameObject, float>(gmObj => Vector3.Distance(gmObj.transform.position, transform.position)).First(); } }
+    public GameObject NearestGimmic
+    {
+        get
+        {
+            return NearGimmicsAll.Count() < 1 ? null : NearGimmicsAll.OrderBy<GameObject, float>(gmObj => Vector3.Distance(gmObj.transform.position, transform.position)).First();
+        }
+    }
 
     /// <summary>
     /// 手に握っているギミックオブジェクト
@@ -26,13 +32,12 @@ public class CharacterHandController : MonoBehaviour {
 
     public bool IsHandFree { get { return GripGimmic == null; } }
 
-	// Use this for initialization
 	void Start () {
         NearGimmicsAll = new List<GameObject>();
 	}
 	
-	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
         // PickUpを押され、何も持っておらず、近くにギミックがある時、その物を手にする
         if (Input.GetButtonDown("PickUp") && IsHandFree && NearestGimmic != null)
         {

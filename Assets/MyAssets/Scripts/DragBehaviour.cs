@@ -11,6 +11,7 @@ public class DragBehaviour : BaseGimmicBehaviour {
     public CharacterMotor.CharacterMotorMovement DraggingMovement;
     private CharacterMotor.CharacterMotorMovement defaultMovement;
 
+
     public Vector3 DraggingHandPosition;
     private Vector3 defaultHandPosition;
 

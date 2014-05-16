@@ -24,7 +24,6 @@ public class CharacterHandController : MonoBehaviour {
             return NearGimmicsAll.Count() < 1 ? null : NearGimmicsAll.OrderBy<GameObject, float>(gmObj => Vector3.Distance(gmObj.transform.position, transform.position)).First();
         }
     }
-
     /// <summary>
     /// 手に握っているギミックオブジェクト
     /// </summary>
@@ -44,15 +43,22 @@ public class CharacterHandController : MonoBehaviour {
 
             // ギミックを手にする
             GripGimmic = NearestGimmic;
-            GripGimmic.SendMessage("PickUp"); // PickUpメソッドを呼び出す
+            GripGimmic.collider.enabled = false;//ギミックのコライダーをオフにする
+            NearGimmicsAll.Remove(GripGimmic);//近くにあるものリストから握っている物を削除する
+            GripGimmic.SendMessage("PickUp"); // PickUpメソッドを呼び出す         
+            
         }
         // PutDownを押され、ギミックを手にしているとき、その物を手放す
         if (Input.GetButtonDown("PutDown") && !IsHandFree)
         {
-
+            GripGimmic.collider.enabled = true;//ギミックのコライダーをオンにする
             // ギミックを手放す
             GripGimmic.SendMessage("PutDown"); // PutDownメソッドを呼び出す
             GripGimmic = null;
+        }
+        if(Input.GetKeyDown(KeyCode.E) && NearestGimmic != null)
+        {
+            NearestGimmic.SendMessage("Action");
         }
 	}
 

@@ -23,8 +23,8 @@ public class DragBehaviour : BaseGimmicBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        
+	void Update () 
+    {
 	}
 
     public override void PickUp()

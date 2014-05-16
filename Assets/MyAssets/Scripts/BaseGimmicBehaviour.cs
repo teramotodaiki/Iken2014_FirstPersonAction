@@ -21,12 +21,17 @@ public abstract class BaseGimmicBehaviour : MonoBehaviour
     /// </summary>
     public virtual void PickUp()
     {
+        Player.characterMoter.SetVelocity(Vector3.zero);
+
         // 手に追従, 手と同じ位置に移動(相対位置をゼロに)
         transform.parent = Player.handGameObject.transform;
         transform.localPosition = Vector3.zero;
 
         // 重力をなくす
         rigidbody.useGravity = false;
+
+        //手から物を離す時の速度を０にする。
+        transform.rigidbody.velocity = Vector3.zero;
     }
 
     /// <summary>
@@ -41,5 +46,10 @@ public abstract class BaseGimmicBehaviour : MonoBehaviour
         // ちょっと投げ捨てる
         rigidbody.AddForce((Player.rootGameObject.transform.forward + Player.rootGameObject.transform.up) * 5f, ForceMode.VelocityChange);
         rigidbody.useGravity = true;
+    }
+
+    public virtual void Action()
+    {
+        //Debug.Log(gameObject);//テスト用
     }
 }

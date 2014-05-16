@@ -22,7 +22,6 @@ public class SlideDoor : MonoBehaviour {
         if(time >0 && time < 1.5f)
             door.transform.position += door.transform.right * 0.05f;
         if (time >= 1.5f) Destroy(gameObject);
-        Debug.Log(Slide);
 	}
 
     void OnTriggerEnter(Collider collider)

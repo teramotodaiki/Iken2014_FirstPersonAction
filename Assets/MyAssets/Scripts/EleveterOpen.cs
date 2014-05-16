@@ -5,6 +5,7 @@ public class EleveterOpen : MonoBehaviour {
 
     bool SlideFlg = false;
     GameObject DoorL, DoorR;
+    float doorL_x, doorR_x;
     public float time = 0;
 
 	// Use this for initialization
@@ -18,17 +19,17 @@ public class EleveterOpen : MonoBehaviour {
 	void Update () 
     {
         if (SlideFlg) time += Time.fixedDeltaTime;
-
-        if(time > 1.0f)
+        if(time > 0 && time < 1.0f)
         {
-            DoorL.transform.position += DoorL.transform.right * 0.05f;
-            DoorR.transform.position -= DoorR.transform.right * 0.05f;
+            DoorL.transform.position += transform.right * 0.05f;
+            DoorR.transform.position -= transform.right * 0.05f;
         }
-        if(time > 2.0f)
+        if (time >= 2.0f && time < 3.0f)
         {
-            time = 0;
-            Destroy(gameObject);
+            DoorL.transform.position -= transform.right * 0.05f;
+            DoorR.transform.position += transform.right * 0.05f;
         }
+        Debug.Log(time);
 	}
 
     void OnTriggerEnter(Collider collider)
@@ -37,9 +38,9 @@ public class EleveterOpen : MonoBehaviour {
             SlideFlg = true; 
     }
 
-    void OnTriggerExit(Collider collider)
-    {
-        if (collider.gameObject.tag == "Player")
-            SlideFlg = false;
-    }
+    //void OnTriggerExit(Collider collider)
+    //{
+    //    if (collider.gameObject.tag == "Player")
+    //        SlideFlg = false;
+    //}
 }

@@ -18,7 +18,7 @@ public class EnemyBehaviour : MonoBehaviour {
 	void Update () 
     {
         if (timeFlg) time += Time.fixedDeltaTime;
-        if(time > 2.8f)
+        if(time > 1.2f)
             nav.SetDestination(GameObject.Find("Player").transform.position);
 	}
 

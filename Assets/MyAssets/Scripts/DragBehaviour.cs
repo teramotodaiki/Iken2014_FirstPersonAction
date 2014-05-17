@@ -17,6 +17,8 @@ public class DragBehaviour : BaseGimmicBehaviour {
 
     private SpringJoint springJoint;
 
+    public GameObject exprosion;// 爆発のプレハブ
+
 	// Use this for initialization
 	void Start () {
         springJoint = GetComponent<SpringJoint>(); // SpringJointを取得
@@ -51,5 +53,21 @@ public class DragBehaviour : BaseGimmicBehaviour {
         Player.characterMoter.movement = defaultMovement;
         Player.handGameObject.transform.localPosition = defaultHandPosition;
         transform.position = springJoint.connectedBody.transform.position + Vector3.up * Player.handGameObject.transform.position.y; // 元々あった持ち手の位置
+    }
+
+    // 着火しているライターがぶつけられた時の処理
+    void OnTriggerEnter(Collider col)
+    {
+        // 衝突したものがライターであるか
+        if (col.gameObject == LighterBehaviour.lighter)
+        {
+            // ライターに火がついているか
+            if (LighterBehaviour.Lighter)
+            {
+                // 引火する
+                Instantiate(LighterBehaviour.Fire_obj, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                Instantiate(exprosion, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+            }
+        }
     }
 }

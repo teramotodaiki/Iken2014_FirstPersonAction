@@ -27,6 +27,9 @@ public abstract class BaseGimmicBehaviour : MonoBehaviour
 
         // 重力をなくす
         rigidbody.useGravity = false;
+
+        // それまでの速度を０にする
+        transform.rigidbody.velocity = Vector3.zero;
     }
 
     /// <summary>

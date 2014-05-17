@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Steel Barrels/LOD/Materials.meta
 guid: 123fe8accc782294096e5af34f6b2c65
+=======
+guid: c9d96610ba864de4a88ec76d4747ef28
+>>>>>>> Fix-0514:Assets/Standard Assets.meta
 folderAsset: yes
 DefaultImporter:
   userData: 

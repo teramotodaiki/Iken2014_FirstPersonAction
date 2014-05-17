@@ -21,6 +21,8 @@ public abstract class BaseGimmicBehaviour : MonoBehaviour
     /// </summary>
     public virtual void PickUp()
     {
+        Player.characterMoter.SetVelocity(Vector3.zero);
+
         // 手に追従, 手と同じ位置に移動(相対位置をゼロに)
         transform.parent = Player.handGameObject.transform;
         transform.localPosition = Vector3.zero;
